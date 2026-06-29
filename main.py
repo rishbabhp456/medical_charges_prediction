@@ -121,6 +121,7 @@ def region_options():
 
 
 @app.route("/predict_charges", methods=["POST"])
+@jwt_required()
 def predict_charges():
     user_input_data = request.form
    
