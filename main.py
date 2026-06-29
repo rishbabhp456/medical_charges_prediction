@@ -69,7 +69,7 @@ def login():
     if response:
         access_token = create_access_token(
             identity=user_name,            
-            expires_delta=datetime.timedelta(minutes=1))
+            expires_delta=datetime.timedelta(minutes=10))
         return jsonify({"status": "success","message": "Login Successful", 
                         "access_token":access_token})
     else:
@@ -121,7 +121,6 @@ def region_options():
 
 
 @app.route("/predict_charges", methods=["POST"])
-@jwt_required()
 def predict_charges():
     user_input_data = request.form
    
