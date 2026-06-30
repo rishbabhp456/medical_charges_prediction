@@ -14,4 +14,4 @@ FLASK_PORT = 8000
 
 ML_MODEL_PATH = os.path.join(os.getcwd(), "artifacts", "linear_reg_med_ins.pkl")
 INPUT_DATA_PATH = os.path.join(os.getcwd(), "data", "medical_insurance.csv")
-JSON_DATA_PATH = os.path.join(os.getcwd(), "artifacts", "med_ins_column_data.json") 
+INPUT_COLUMN_DATA = os.path.join(os.getcwd(), "artifacts", "med_ins_column_data.json") 

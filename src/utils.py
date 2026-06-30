@@ -22,7 +22,7 @@ class MedicalInsurance:
         """
         This method is used to load column data
         """
-        with open(config.JSON_DATA_PATH, "r") as f:
+        with open(config.INPUT_COLUMN_DATA, "r") as f:
             self.input_columns = json.load(f)
 
         return self.input_columns
