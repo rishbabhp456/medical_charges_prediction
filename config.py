@@ -1,11 +1,11 @@
 import os
 
 db_name = "med_ins_db"
-MONGO_USER = "testuser1"
-MONGO_PASSWORD = "admin123$"
+MONGO_USER = "rishabhp"
+MONGO_PASSWORD = "test123%"
 user_collection_name = "collection_user"
 data_collection_name = "collection_data"
-MONGO_URL = f"mongodb+srv://testuser1:{MONGO_PASSWORD}@docdb-cluster-20260630-0547.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
+MONGO_URL = f"mongodb+srv://rishabhp:{MONGO_PASSWORD}@docdb-cluster-20260630-0923.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 
 
 FLASK_HOST = "0.0.0.0"
