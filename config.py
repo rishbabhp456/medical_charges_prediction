@@ -12,6 +12,6 @@ MONGO_URL = f"mongodb+srv://rishabhp:{MONGO_PASSWORD}@docdb-cluster-20260630-092
 FLASK_HOST = "0.0.0.0"
 FLASK_PORT = 8000
 
-ML_MODEL_PATH = os.path.join(os.getcwd(), "artifacts", "LinReg_med_ins.pkl")
+ML_MODEL_PATH = os.path.join(os.getcwd(), "artifacts", "linear_reg_med_ins.pkl")
 INPUT_DATA_PATH = os.path.join(os.getcwd(), "data", "medical_insurance.csv")
 JSON_DATA_PATH = os.path.join(os.getcwd(), "artifacts", "med_ins_column_data.json") 
