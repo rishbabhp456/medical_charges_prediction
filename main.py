@@ -115,8 +115,8 @@ def region_options():
     """
     this Method is used for showing options in dropdown
     """
-    df = pd.read_csv(config.INPUT_DATA_PATH)
-    region_values = list(df['region'].unique())
+    col_data = pd.read_csv(config.INPUT_DATA_PATH)
+    region_values = [feature.replace("region_", "") for feature in col_data['colName'] if "region_" in feature]
     return jsonify(region_values)
 
 
