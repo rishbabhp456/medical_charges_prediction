@@ -7,8 +7,7 @@ This is a web application that predicts medical insurance charges based on user-
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Technology Stack](#technology-stack)
-- [Setup and Installation](#setup-and-installation)
-- [Running the Application](#running-the-application)
+- [Set and Run](#set-and-run)
 - [API Endpoints](#api-endpoints)
 - [Project Flow](#project-flow)
 
@@ -50,15 +49,15 @@ medical_charges_prediction/
 - **Authentication**: Flask-JWT-Extended
 - **Libraries**: Pandas, NumPy
 
-## Setup and Installation
+## Set and Run
 
-1.  **Clone the repository:**
+1.  **Clone the repository**
     ```bash
     git clone <your-repository-url>
     cd medical_charges_prediction
     ```
 
-2.  **Create a virtual environment and activate it:**
+2.  **Create and activate a virtual environment**
     ```bash
     python -m venv venv
     # On Windows
@@ -67,23 +66,19 @@ medical_charges_prediction/
     source venv/bin/activate
     ```
 
-3.  **Install the required dependencies:**
+3.  **Install dependencies**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Configure Environment Variables:**
+4.  **Configure the application**
     Update `config.py` with your MongoDB connection string, database name, and collection names.
 
-## Running the Application
-
-Execute the `main.py` file to start the Flask development server:
-
-```bash
-python main.py
-```
-
-The application will be available at `http://127.0.0.1:5000`.
+5.  **Run the application**
+    ```bash
+    python main.py
+    ```
+    The application will be available at `http://127.0.0.1:5000`.
 
 ## API Endpoints
 
@@ -101,10 +96,13 @@ The application exposes several REST API endpoints for user management and predi
 
 ## Project Flow
 
-1.  **User Registration/Login**: A new user can register. An existing user can log in to receive a JWT token.
-2.  **Prediction Page**: After logging in, the user is redirected to the prediction page.
-3.  **Input Data**: The user fills out a form with their details (age, BMI, children, gender, smoker status, region).
-4.  **Submit for Prediction**: The user submits the form. The frontend sends a POST request with the form data and the JWT token in the header to the `/predict_charges` endpoint.
-5.  **Backend Processing**: The Flask backend receives the request, validates the token, processes the input data, and feeds it to the machine learning model.
-6.  **Return Prediction**: The model's prediction is returned to the user and displayed on the page.
-7.  **Log Data**: The input data and the resulting prediction are stored as a new document in the MongoDB database.
+The application workflow is centered around user authentication and model prediction, with MongoDB integrated at key points:
+
+1.  **User Registration**: A new user provides their details via the `/register` endpoint. The application checks the `users` collection in MongoDB to ensure the user doesn't already exist before inserting a new user document.
+2.  **User Login**: An existing user logs in via the `/login` endpoint. The application queries the `users` collection to validate the credentials. Upon success, a JWT access token is generated and sent to the client.
+3.  **Prediction Page**: The user navigates to the prediction form. Dynamic dropdowns for `gender`, `smoker`, and `region` are populated by fetching data via dedicated API endpoints.
+4.  **Submit for Prediction**: The user fills out the form and submits it. The frontend sends a POST request to the `/predict_charges` endpoint.
+5.  **Backend Processing**: The Flask backend receives the data, converts it into the format required by the machine learning model, and generates a prediction.
+6.  **Data Logging**: The application logs the user's input data along with the model's prediction by inserting a new document into the `prediction_data` collection in MongoDB. This is useful for monitoring and future model retraining.
+7.  **Return Prediction**: The final predicted insurance charge is returned as a JSON response and displayed to the user on the frontend.
+# medical_insurance_price_prediction
